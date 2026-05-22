@@ -1,0 +1,9 @@
+manifest: ./lzc-manifest.yml
+pkgout: ./
+icon: ./icon.png
+
+compose_override:
+  services:
+    llama-cpp:
+      devices:
+        - /dev/dri:/dev/dri

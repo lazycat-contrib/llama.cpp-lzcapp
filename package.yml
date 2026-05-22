@@ -1,0 +1,20 @@
+package: community.lazycat.app.llama-cpp
+version: 1.0.0
+name: Llama.cpp
+description: "High-performance LLM inference server powered by llama.cpp, supporting GGUF models and multimodal vision models"
+min_os_version: 1.5.0
+homepage: https://github.com/ggml-org/llama.cpp
+author: ggml-org
+license: MIT
+
+locales:
+  zh:
+    name: "Llama.cpp"
+    description: "基于 llama.cpp 的高性能 LLM 推理服务，支持 GGUF 模型与多模态视觉模型"
+  en:
+    name: "Llama.cpp"
+    description: "High-performance LLM inference server powered by llama.cpp, supporting GGUF models and multimodal vision models"
+
+permissions:
+  required:
+    - net.internet

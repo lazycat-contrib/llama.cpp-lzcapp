@@ -1,0 +1,39 @@
+application:
+  gpu_accel: true
+  subdomain: llamacpp
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://llama-cpp:15730/
+
+services:
+  llama-cpp:
+    # ghcr.io/ggml-org/llama.cpp:server-vulkan
+    image:  registry.lazycat.cloud/czyt/ggml-org/llama.cpp:7c33cd649fe6b97b
+    environment:
+      - LLAMA_ARG_NO_FIT=true
+      - LLAMA_ARG_N_GPU_LAYERS=16
+      - LLAMA_ARG_MODELS_DIR=/models
+{{if .U.models_preset}}
+      - LLAMA_ARG_MODELS_PRESET={{.U.models_preset}}
+{{end}}
+{{if .U.api_key}}
+      - LLAMA_API_KEY={{.U.api_key}}
+{{end}}
+      - LLAMA_ARG_HOST=0.0.0.0
+      - LLAMA_ARG_PORT=15730
+      - LLAMA_ARG_CTX_SIZE={{.U.context_size}}
+
+    binds:
+      - /lzcapp/var/models:/models
+    healthcheck:
+      disable: true
+
+usage: |
+  使用说明：
+  1. 将 GGUF 模型文件放入 /lzcapp/var/models 目录
+  2. 多模态模型需同时放入对应的 mmproj 投影文件
+  3. API 请求时通过 model 字段指定模型文件名
+  4. 部署后在浏览器中打开应用即可访问 Chat UI
+  5. 模型热切换会产生短暂延迟，请确保内存余量充足

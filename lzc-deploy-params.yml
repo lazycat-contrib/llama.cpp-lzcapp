@@ -1,0 +1,32 @@
+params:
+  - id: models_preset
+    type: string
+    name: "Models Preset File"
+    description: "Path to models preset config file inside container (e.g. /models/models.ini). Leave empty to disable."
+    default_value: ""
+    optional: true
+
+  - id: api_key
+    type: secret
+    name: "API Key"
+    description: "API key for server authentication. Leave empty to disable authentication."
+    default_value: "sk-llamcpp-secret-key"
+    optional: true
+
+  - id: context_size
+    type: string
+    name: "Context Size"
+    description: "Context window size in tokens (4096 recommended for multimodal, larger values use more memory)"
+    default_value: "4096"
+
+locales:
+  zh:
+    models_preset:
+      name: "模型预设文件"
+      description: "容器内模型预设配置文件路径（如 /models/models.ini）。留空则禁用。"
+    api_key:
+      name: "API 密钥"
+      description: "服务器 API 认证密钥。留空则禁用认证。"
+    context_size:
+      name: "上下文大小"
+      description: "上下文窗口 Token 数（多模态模型建议 4096，更大值占用更多内存）"

@@ -6,6 +6,49 @@ application:
   upstreams:
     - location: /
       backend: http://llama-cpp:15730/
+{{if .U.api_key}}
+  injects:
+    - id: apikey-autofill
+      when:
+        - /#/settings/general
+      do:
+        - src: |
+            (function() {
+              const apiKey = "{{ .U.api_key }}";
+              if (!apiKey) return;
+
+              const selectors = [
+                'input[name="api_key"]',
+                'input[name="apikey"]',
+                'input[name="api-key"]',
+                'input[placeholder*="API"]',
+                'input[placeholder*="api"]',
+                'input[placeholder*="Key"]',
+                'input[id*="api"]',
+                'input[id*="key"]',
+              ];
+
+              function tryFill() {
+                for (const sel of selectors) {
+                  const el = document.querySelector(sel);
+                  if (el && !el.value) {
+                    el.value = apiKey;
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                    el.dispatchEvent(new Event('change', { bubbles: true }));
+                    el.dispatchEvent(new Event('keydown', { bubbles: true }));
+                    el.dispatchEvent(new Event('keyup', { bubbles: true }));
+                    el.dispatchEvent(new Event('blur', { bubbles: true }));
+                    console.log('[apikey-autofill] Filled API key into:', sel);
+                    return;
+                  }
+                }
+              }
+
+              tryFill();
+              setTimeout(tryFill, 1000);
+              setTimeout(tryFill, 3000);
+            })();
+{{end}}
 
 services:
   llama-cpp:

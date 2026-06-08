@@ -53,7 +53,7 @@ application:
 services:
   llama-cpp:
     # ghcr.io/ggml-org/llama.cpp:server-vulkan
-    image:  registry.lazycat.cloud/czyt/ggml-org/llama.cpp:7c33cd649fe6b97b
+    image:  registry.lazycat.cloud/czyt/ggml-org/llama.cpp:6f334957ccece3b3
     environment:
       - LLAMA_ARG_NO_FIT=true
       - LLAMA_ARG_N_GPU_LAYERS=16

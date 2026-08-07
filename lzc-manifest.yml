@@ -52,7 +52,7 @@ application:
 
 services:
   llama-cpp:
-    # ghcr.io/ggml-org/llama.cpp:server-vulkan
+    # upstream: ghcr.io/ggml-org/llama.cpp:server-vulkan-b10290
     image:  registry.lazycat.cloud/czyt/ggml-org/llama.cpp:6f334957ccece3b3
     environment:
       - LLAMA_ARG_NO_FIT=true

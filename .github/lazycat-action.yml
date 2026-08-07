@@ -26,6 +26,7 @@ images:
     channel: custom
     sort: created
     tag_regex: '^server-vulkan-[A-Za-z0-9._-]+$'
+    max_tags: 20000
     delivery:
       mode: lazycat
 

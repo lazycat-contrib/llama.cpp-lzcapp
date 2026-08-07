@@ -31,6 +31,6 @@ jobs:
       APPSTORE_TOKEN: ${{ secrets.APPSTORE_TOKEN }}
       APP_ID: ${{ secrets.APP_ID }}
       PRIVATE_STORE_GROUP_CODES: ${{ secrets.PRIVATE_STORE_GROUP_CODES }}
-      REGISTRY: ghcr.io
-      REGISTRY_USERNAME: ${{ github.actor }}
-      REGISTRY_PASSWORD: ${{ github.token }}
+      REGISTRY: ${{ secrets.REGISTRY }}
+      REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}

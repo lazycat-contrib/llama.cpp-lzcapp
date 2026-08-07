@@ -52,8 +52,8 @@ application:
 
 services:
   llama-cpp:
-    # upstream: ghcr.io/ggml-org/llama.cpp:server-vulkan-b10290
-    image:  registry.lazycat.cloud/czyt/ggml-org/llama.cpp:6f334957ccece3b3
+    # upstream: ghcr.io/ggml-org/llama.cpp:server-vulkan-b10290@sha256:75305e84f542d994d5a350776b85dbe4483478b54fa7f6bf9be5c9dc12d06174
+    image: registry.lazycat.cloud/czyt/ggml-org/llama.cpp:5de2ef8f175b35b1
     environment:
       - LLAMA_ARG_NO_FIT=true
       - LLAMA_ARG_N_GPU_LAYERS=16
@@ -67,12 +67,10 @@ services:
       - LLAMA_ARG_HOST=0.0.0.0
       - LLAMA_ARG_PORT=15730
       - LLAMA_ARG_CTX_SIZE={{.U.context_size}}
-
     binds:
       - /lzcapp/var/models:/models
     healthcheck:
       disable: true
-
 usage: |
   使用说明：
   1. 将 GGUF 模型文件放入 /lzcapp/var/models 目录

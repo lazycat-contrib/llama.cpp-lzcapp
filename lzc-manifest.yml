@@ -7,13 +7,13 @@ application:
     - location: /
       backend: http://llama-cpp:15730/
   injects:
-    - id: ensure-upstream-gzip-support
+    - id: disable-upstream-content-encoding
       on: request
       auth_required: false
       when:
         - "/*"
       do: |
-        ctx.headers.set("Accept-Encoding", "gzip");
+        ctx.headers.set("Accept-Encoding", "identity");
 {{if .U.api_key}}
     - id: apikey-autofill
       when:

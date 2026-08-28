@@ -19,8 +19,8 @@ application:
 
 services:
   llama-cpp:
-    # upstream: ghcr.io/ggml-org/llama.cpp:server-vulkan-b10644@sha256:2a94deca840ecd19c5f80668a7c294383a0731eea8674b9223b20399e3c6826b
-    image: registry.lazycat.cloud/czyt/ggml-org/llama.cpp:e0aed35c607a2824
+    # upstream: ghcr.io/ggml-org/llama.cpp:server-vulkan-b10666@sha256:2f8d1f2c3ed96710ba3dabc571d73059af9b6c3ca57ee25721e47e2c02a86182
+    image: registry.lazycat.cloud/czyt/ggml-org/llama.cpp:acbaef6964e00a0d
     environment:
       - LLAMA_ARG_NO_FIT=true
       - LLAMA_ARG_N_GPU_LAYERS=16

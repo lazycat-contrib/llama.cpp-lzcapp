@@ -1,4 +1,5 @@
 application:
+  background_task: true
   gpu_accel: true
   subdomain: llamacpp
   public_path:
@@ -6,16 +7,6 @@ application:
   upstreams:
     - location: /
       backend: http://llama-cpp:15730/
-{{if .U.api_key}}
-  injects:
-    - id: api-key-forward
-      on: request
-      auth_required: false
-      when:
-        - "/*"
-      do: |
-        ctx.headers.set("X-Api-Key", "{{ .U.api_key }}");
-{{end}}
 
 services:
   llama-cpp:

@@ -9,8 +9,8 @@ application:
       backend: http://llama-cpp:15730/
 services:
   llama-cpp:
-    # upstream: ghcr.io/ggml-org/llama.cpp:server-vulkan-b12679@sha256:c56e1dae18cb3c497733f1bbd3988a1ba777e9b6633b1e28f5a97c68a1982de5
-    image: registry.lazycat.cloud/czyt/ggml-org/llama.cpp:2e1fee41473958d5
+    # upstream: ghcr.io/ggml-org/llama.cpp:server-vulkan-b12723@sha256:c9ba8d2fb6b45361ce84f73472be8f7b14cfc6e942ff3354c7c1e3b2ce34bba3
+    image: registry.lazycat.cloud/czyt/ggml-org/llama.cpp:f0781e208a7dd107
     environment:
       - LLAMA_ARG_NO_FIT=true
       - LLAMA_ARG_N_GPU_LAYERS=16
